@@ -48,6 +48,14 @@ class LoginViewModel : ViewModel() {
     //  creating this variable, other classes will be able to query for whether the user is logged
     //  in or not
 
+    val authenticationState = FirebaseUserLiveData().map { user ->
+        if (user != null) {
+            AuthenticationState.AUTHENTICATED
+        } else {
+            AuthenticationState.UNAUTHENTICATED
+        }
+    }
+
     /**
      * Gets a fact to display based on the user's set preference of which type of fact they want
      * to see (Android fact or California fact). If there is no logged in user or if the user has
