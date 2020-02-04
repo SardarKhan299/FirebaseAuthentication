@@ -65,6 +65,11 @@ class MainFragment : Fragment() {
             // TODO call launchSignInFlow when authButton is clicked
             launchSignInFlow()
         }
+
+        binding.settingsBtn.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
+            findNavController().navigate(action)
+        }
     }
 
 
